@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 静态工厂方法 -->
+    <bean id="getDog" class="com.softeem.springioc.AnimalFactory" factory-method="getAnimal">
+        <constructor-arg value="dog"></constructor-arg>
+        <property name  ="dName" value="柴犬"></property>
+    </bean>
+
+<!--  实例化工厂方法 -->
+    <bean id="animalFactory" class="com.softeem.springioc.AnimalFactory"></bean>
+    <bean id="getCat" factory-bean="animalFactory" factory-method="getAnimal2">
+        <constructor-arg value="cat"></constructor-arg>
+        <property name="cName" value="养猫的sb"></property>
+    </bean>
+</beans>
